@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crystal Game</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-3 random-number">
+                <p>Random Number</p>
+            </div>
+            <div class="col-3 score-text">
+                
+                <p>Lost:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class=col-3 col-sm-1>
+                <button class="btn crystal-img1" value=""> <img src="assets/images/diamond.gif" height=95px
+                        width=60px></img></button>
+            </div>
+            <div class=col-3 col-sm-1>
+                <button class="btn crystal-img2" value=""><img src="assets/images/home.jpg" height=90px
+                        width=60px></img></button>
+            </div>
+            <div class=col-3 col-sm-1>
+                <button class="btn crystal-img3" value=""><img src="assets/images/sapphire.webp" height=90px
+                        width=95px></img></button>
+            </div>
+            <div class=col-3 col-sm-1>
+                <button class="btn crystal-img4" value=""><img src="assets/images/square.png" height=110px
+                        width=100px></img></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 counter-text">
+                <p>My Score</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script type="text/javascript">
+
+    var counter = 0;
+    var win = 0;
+    var lost = 0;
+
+    $(document).ready(function () {
+
+        var randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+
+        var counter1 = Math.floor(Math.random() * (13 - 1)) + 1;
+        var counter2 = Math.floor(Math.random() * (13 - 1)) + 1;
+        var counter3 = Math.floor(Math.random() * (13 - 1)) + 1;
+        var counter4 = Math.floor(Math.random() * (13 - 1)) + 1;
+
+        $(".random-number").text("Random Number: " + randomNumber);
+        randomNumber = parseInt(randomNumber);
+
+        function run() {
+            if (counter > randomNumber) {
+                lost++;
+                $(".score-text").html("<p> Lost: " + lost++);
+            }
+            if (counter === randomNumber) {
+                win++;
+                $(".score-text").html("<p> Wins: " + win);
+            }
+            if (counter < randomNumber) {
+                $(".counter-text").html("My Score: " + counter);
+                console.log("counter: " + counter);
+            }
+        };
+
+        $(".crystal-img1").on("click", function () {
+                    counter1 += $(this).val();
+                    counter1 = parseInt(counter1);
+                    counter += counter1;
+                    console.log("counter1: " + counter1);
+                    run();
+                });
+
+                $(".crystal-img2").on("click", function () {
+                    counter2 += $(this).val();
+                    counter2 = parseInt(counter2);
+                    counter += counter2;
+                    console.log("counter2: " + counter2);
+                    run();
+                });
+
+                $(".crystal-img3").on("click", function () {
+                    counter3 += $(this).val();
+                    counter3 = parseInt(counter3);
+                    counter += counter3;
+                    console.log("counter3: " + counter3);
+                    run();
+                });
+
+                $(".crystal-img4").on("click", function () {
+                    counter4 += $(this).val();
+                    counter4 = parseInt(counter4);
+                    counter += counter4;
+                    console.log("counter4 " + counter4);
+                    run();
+                });
+        
+    });
+
+</script>
+
+</html>
