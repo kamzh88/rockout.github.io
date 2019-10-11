@@ -1,3 +1,17 @@
 body {
     background-image: URL(../images/ep_naturalwhite.png);
+    text-align: center;
+    width: 960px auto;
+    margin-left: 20px;
+}
+
+.heading{
+    font-size: 50px;
+    padding: 20px;
+    
+}
+
+.body{
+    padding: 30px;
+    margin-left: 20px;
 }
