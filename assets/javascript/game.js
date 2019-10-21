@@ -4,24 +4,30 @@ var lost = 0;
 
 $(document).ready(function () {
 
-    var randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
-    var counter1 = Math.floor(Math.random() * (13 - 1)) + 1;
-    var counter2 = Math.floor(Math.random() * (13 - 1)) + 1;
-    var counter3 = Math.floor(Math.random() * (13 - 1)) + 1;
-    var counter4 = Math.floor(Math.random() * (13 - 1)) + 1;
+    var randomNumber = Math.floor(Math.random() * (120)) + 19;
+    
+    
+    var counter1;
+    var counter2;
+    var counter3;
+    var counter4;
+
+
+    function calcValues(){
+        counter1 = Math.floor(Math.random() * (12)) + 1;
+        counter2 = Math.floor(Math.random() * (12)) + 1;
+        counter3 = Math.floor(Math.random() * (12)) + 1;
+        counter4 = Math.floor(Math.random() * (12)) + 1;
+    }
 
     $(".random-number").text("Random Number: " + randomNumber);
-    randomNumber = parseInt(randomNumber);
 
     function clear() {
-        randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+        randomNumber = Math.floor(Math.random() * (120)) + 19;
         $(".random-number").text("Random Number: " + randomNumber);
         counter = 0;
         $(".counter-text").html(counter);
-        counter1 = Math.floor(Math.random() * (13 - 1)) + 1;
-        counter2 = Math.floor(Math.random() * (13 - 1)) + 1;
-        counter3 = Math.floor(Math.random() * (13 - 1)) + 1;
-        counter4 = Math.floor(Math.random() * (13 - 1)) + 1;
+        calcValues();
     }
 
     function run() {
@@ -46,31 +52,29 @@ $(document).ready(function () {
         }
     };
 
-    $(".crystal-img1").on("click", function () {
-        counter1 += $(this).val();
-        counter1 = parseInt(counter1);
-        counter += counter1;
+    function addClickValues(value){
+        value += $(this).val();
+        value = parseInt(value);
+        counter += value;
         run();
+    }
+
+    $(".crystal-img1").on("click", function(){
+        addClickValues(counter1);
     });
 
     $(".crystal-img2").on("click", function () {
-        counter2 += $(this).val();
-        counter2 = parseInt(counter2);
-        counter += counter2;
-        run();
+        addClickValues(counter2);
     });
 
     $(".crystal-img3").on("click", function () {
-        counter3 += $(this).val();
-        counter3 = parseInt(counter3);
-        counter += counter3;
-        run();
+        addClickValues(counter3);
     });
 
     $(".crystal-img4").on("click", function () {
-        counter4 += $(this).val();
-        counter4 = parseInt(counter4);
-        counter += counter4;
-        run();
+        addClickValues(counter4);
     });
+
+    calcValues();
+    
 });
